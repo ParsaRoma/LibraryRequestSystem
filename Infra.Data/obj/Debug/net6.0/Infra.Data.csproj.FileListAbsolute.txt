@@ -1,0 +1,17 @@
+D:\MyEfProj\Infra.data\bin\Debug\net6.0\Infra.data.deps.json
+D:\MyEfProj\Infra.data\bin\Debug\net6.0\Infra.data.runtimeconfig.json
+D:\MyEfProj\Infra.Data\bin\Debug\net6.0\Infra.data.dll
+D:\MyEfProj\Infra.Data\bin\Debug\net6.0\Infra.data.pdb
+D:\MyEfProj\Infra.Data\bin\Debug\net6.0\Domain.dll
+D:\MyEfProj\Infra.Data\bin\Debug\net6.0\Domain.pdb
+D:\MyEfProj\Infra.Data\obj\Debug\net6.0\Infra.data.csproj.AssemblyReference.cache
+D:\MyEfProj\Infra.Data\obj\Debug\net6.0\Infra.data.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyEfProj\Infra.Data\obj\Debug\net6.0\Infra.data.AssemblyInfoInputs.cache
+D:\MyEfProj\Infra.Data\obj\Debug\net6.0\Infra.data.AssemblyInfo.cs
+D:\MyEfProj\Infra.Data\obj\Debug\net6.0\Infra.data.csproj.CoreCompileInputs.cache
+D:\MyEfProj\Infra.data\obj\Debug\net6.0\Infra.data.csproj.CopyComplete
+D:\MyEfProj\Infra.Data\obj\Debug\net6.0\Infra.data.dll
+D:\MyEfProj\Infra.Data\obj\Debug\net6.0\refint\Infra.data.dll
+D:\MyEfProj\Infra.Data\obj\Debug\net6.0\Infra.data.pdb
+D:\MyEfProj\Infra.data\obj\Debug\net6.0\Infra.data.genruntimeconfig.cache
+D:\MyEfProj\Infra.data\obj\Debug\net6.0\ref\Infra.data.dll
