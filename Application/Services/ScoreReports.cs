@@ -12,20 +12,12 @@ namespace Application.Services
     public class ScoreReports : IScoreReports
     {
         private readonly UnitOfWork db = new UnitOfWork();
-        public IEnumerable<BookDto> NumberOfEveryUserBook()
+        public BookDto NumberOfEveryUserBook()
         {
-            var Numbers = from book in db.BookRepository.Get() join
-            bookshelf in db.BookShelfRepository.Get() on book.Id equals bookshelf.BookID
-            join shelf in db.ShelfRepository.Get() on bookshelf.ShelfID equals shelf.Id
-            join users in db.UsersRepository.Get() on shelf.UserID equals users.Id 
-            group new {users, book} by new {users.Id, users.UserName,users.UserLastName} into groupResult
-            select new BookDto()
-            {
-                 Id = groupResult.Key.Id,
-                 UserName = groupResult.Key.UserName,
-                 UserLastName = groupResult.Key.UserLastName,
-                 BookNumber = groupResult.Count()
-            };
+    
+            var Numbers = db.ShelfRepository.Include(xx => x.User.UserName, x => x.User.UserLastName)
+            .Select(x => x.UserID)
+            
 
             return Numbers;
 

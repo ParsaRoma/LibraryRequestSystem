@@ -14,6 +14,7 @@ namespace Application.Services
 
         public IEnumerable<BookSortDto> MaximumBookVisits()
         {
+            var book = db.BookRepository.Get().join.in
             var BookSort = from book in db.BookRepository.Get() join
             bookshelf in db.BookShelfRepository.Get() on book.Id equals bookshelf.BookID
             join shelf in db.ShelfRepository.Get() on bookshelf.ShelfID equals shelf.Id

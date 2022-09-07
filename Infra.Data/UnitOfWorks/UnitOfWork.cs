@@ -4,57 +4,58 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain.Models;
 using Infra.Data.data;
+using Infra.Data.IGenericRepository;
 
 namespace Infra.Data.DAL
 {
     public class UnitOfWork : IDisposable
     {
         private ApplicationDbContext context = new ApplicationDbContext();
-        private GenericRepository<Books>? bookRepository;
-        private GenericRepository<Users>? usersRepository;
-        private GenericRepository<Shelf>? shelfRepository;
-        private GenericRepository<BookShelf>? bookshelfRepository;
+        private IRepository<Books>? bookRepository;
+        private IRepository<Users>? usersRepository;
+        private IRepository<Shelf>? shelfRepository;
+        private IRepository<BookShelf>? bookshelfRepository;
 
-        public GenericRepository<Books> BookRepository
+        public IRepository<Books> BookRepository
         {
             get 
             {
                 if (this.bookRepository == null)
                 {
-                    this.bookRepository = new GenericRepository<Books>(context);
+                    this.bookRepository = new BaseRepository<Books>(context);
                 }
                 return bookRepository;
             }
         }
-        public GenericRepository<Users> UsersRepository
+        public IRepository<Users> UsersRepository
         {
             get
             {
                 if(this.usersRepository == null)
                 {
-                       this.usersRepository = new GenericRepository<Users>(context); 
+                    this.usersRepository = new BaseRepository<Users>(context); 
                 }
                 return usersRepository;
             }
         }
-        public GenericRepository<Shelf> ShelfRepository
+        public IRepository<Shelf> ShelfRepository
         {
             get
             {
                 if(this.shelfRepository == null)
                 {
-                       this.shelfRepository = new GenericRepository<Shelf>(context); 
+                       this.shelfRepository = new BaseRepository<Shelf>(context); 
                 }
                 return shelfRepository;
             }
         }
-        public GenericRepository<BookShelf> BookShelfRepository
+        public IRepository<BookShelf> BookShelfRepository
         {
             get
             {
                 if(this.bookshelfRepository == null)
                 {
-                       this.bookshelfRepository = new GenericRepository<BookShelf>(context); 
+                       this.bookshelfRepository = new BaseRepository<BookShelf>(context); 
                 }
                 return bookshelfRepository;
             }

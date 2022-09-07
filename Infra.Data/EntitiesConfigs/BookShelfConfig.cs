@@ -24,6 +24,9 @@ namespace Infra.Data.EntitiesConfigs
             .HasOne(bs => bs.Shelf)
                  .WithMany(bs => bs.BookShelves)
                  .HasForeignKey(bs => bs.ShelfID);
+
+            builder.Ignore(bs => bs.Id);
+            
             #endregion
         }
     }

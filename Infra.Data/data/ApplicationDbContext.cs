@@ -27,8 +27,8 @@ namespace Infra.Data.data
             return new ApplicationDbContext(optionsBuilder.Options);
         }
 
-        public DbSet<Books> Books { get; set; }
-        public DbSet<Users> Users { get; set; }
+        public DbSet<Books> books { get; set; }
+        public DbSet<Users> users { get; set; }
         public DbSet<Shelf> Shelves { get; set; }
         public DbSet<BookShelf> bookShelves { get; set; }
         

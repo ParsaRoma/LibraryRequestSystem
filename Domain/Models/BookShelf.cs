@@ -6,11 +6,13 @@ using Domain.BaseEntities;
 
 namespace Domain.Models
 {
-    public class BookShelf 
+    public class BookShelf : BaseEntity
     {
         public int ShelfID { get; set; }
         public int BookID { get; set; }
         public Books? Book { get; set; }
         public Shelf? Shelf { get; set; }
+        
+        
     }
 }
