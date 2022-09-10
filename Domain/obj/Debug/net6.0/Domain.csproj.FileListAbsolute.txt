@@ -10,3 +10,15 @@ D:\MyEfProj\Domain\obj\Debug\net6.0\Domain.dll
 D:\MyEfProj\Domain\obj\Debug\net6.0\refint\Domain.dll
 D:\MyEfProj\Domain\obj\Debug\net6.0\Domain.pdb
 D:\MyEfProj\Domain\obj\Debug\net6.0\ref\Domain.dll
+D:\MyNewEfProj\Domain\bin\Debug\net6.0\Domain.deps.json
+D:\MyNewEfProj\Domain\bin\Debug\net6.0\Domain.dll
+D:\MyNewEfProj\Domain\bin\Debug\net6.0\Domain.pdb
+D:\MyNewEfProj\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+D:\MyNewEfProj\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyNewEfProj\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+D:\MyNewEfProj\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+D:\MyNewEfProj\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+D:\MyNewEfProj\Domain\obj\Debug\net6.0\Domain.dll
+D:\MyNewEfProj\Domain\obj\Debug\net6.0\refint\Domain.dll
+D:\MyNewEfProj\Domain\obj\Debug\net6.0\Domain.pdb
+D:\MyNewEfProj\Domain\obj\Debug\net6.0\ref\Domain.dll

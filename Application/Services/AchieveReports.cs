@@ -13,23 +13,25 @@ namespace Application.Services
         
         private readonly UnitOfWork db = new UnitOfWork();
 
-        public IEnumerable<Books> GetAllBooks()
+        public  IEnumerable<Books> GetAllBooks()
         {
-           var AllBook = db.BookRepository.Get().ToList<Books>();
-           return AllBook;
+        //    var AllBook = db.BookRepository.GetAll();
+        //    return await AllBook;
+        throw new NotImplementedException();
         }
 
         public IEnumerable<Users> GetAllUsers()
         {   
-            var AllUser = db.UsersRepository.Get().ToList<Users>();
-            return AllUser;
-        
+            // var AllUser = db.UsersRepository.GetAll();
+            // return awa AllUser;
+        throw new NotImplementedException();
         }
 
         public IEnumerable<Shelf> GetAllUsersShelf()
         {
-            var AllShelves = db.ShelfRepository.Get().ToList<Shelf>();
-            return AllShelves;
+            // var AllShelves = db.ShelfRepository.List();
+            // return AllShelves;
+        throw new NotImplementedException();
         }
     }
 }

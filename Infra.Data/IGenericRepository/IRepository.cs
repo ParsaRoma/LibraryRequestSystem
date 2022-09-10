@@ -10,13 +10,16 @@ namespace Infra.Data.IGenericRepository
 {
     public interface IRepository<T> where T : BaseEntity
     {
-    T Get(Guid id);
-    IList<T> List();
-    IList<T> List(Expression<Func<T, bool>> expression);
+    Task<T> GetById(int id);
+    Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
+    Task Add(T entity);
+    Task Update(T entity);
+    Task Remove(T entity);
+    Task<IEnumerable<T>> GetAll();
+    Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
+    Task<int> CountAll();
+    Task<int> CountWhere(Expression<Func<T, bool>> predicate);
     public IQueryable<T> Include(params Expression<Func<T, object>>[] Include);
-    void Insert(T entity);
-    void Update(T entity);
-    void Delete(T entity);
     }
 
 }

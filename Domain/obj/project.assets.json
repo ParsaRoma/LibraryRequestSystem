@@ -533,11 +533,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MyEfProj\\Domain\\Domain.csproj",
+      "projectUniqueName": "D:\\MyNewEfProj\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\MyEfProj\\Domain\\Domain.csproj",
+      "projectPath": "D:\\MyNewEfProj\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Parham\\.nuget\\packages\\",
-      "outputPath": "D:\\MyEfProj\\Domain\\obj\\",
+      "outputPath": "D:\\MyNewEfProj\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Parham\\AppData\\Roaming\\NuGet\\NuGet.Config",

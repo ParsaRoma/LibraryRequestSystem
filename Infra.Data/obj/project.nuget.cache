@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QX01z3dSCi00buIAkNoTmaJGu0NmH/cgevIYlqu2sJCChur4ghCQpSRBIWKBXqwcK12SZKxlSr6eQQwKzXXprA==",
+  "dgSpecHash": "6Vv6MFGTWvvNd4uUQPhiD4S2/9pcZ8nE/JynkmQjiNQPylJLogw1k5GOXoc2z+ZAYNU9MBQwV70VEyvV9yslOw==",
   "success": true,
-  "projectFilePath": "D:\\MyEfProj\\Infra.data\\Infra.data.csproj",
+  "projectFilePath": "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Parham\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Parham\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

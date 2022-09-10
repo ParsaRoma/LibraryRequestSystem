@@ -32,6 +32,7 @@ namespace Infra.Data.data
         public DbSet<Shelf> Shelves { get; set; }
         public DbSet<BookShelf> bookShelves { get; set; }
         
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(MyDb1);

@@ -19,6 +19,8 @@ namespace Domain.Models
         public Users? User { get; set; }
         public ICollection<BookShelf>? BookShelves { get; set; }
 
+        public BookShelf? bookshelf { get; set; }
+
 
     }
 }

@@ -11,21 +11,54 @@ namespace Infra.Data.IGenericRepository
 {
     public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly ApplicationDbContext _dataContext;
+        private ApplicationDbContext _dataContext;
         public BaseRepository(ApplicationDbContext dataContext)
         {
             _dataContext = dataContext;
         }
-        public void Delete(T entity)
+        public async Task<T> GetById(int id) 
         {
-            _dataContext.Set<T>().Remove(entity);
-       
-        }
-        public T Get(Guid id)
-        {   
-            return _dataContext.Set<T>().Find(id);
+        return await _dataContext.Set<T>().FindAsync(id);
         }
 
+        public Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate)
+            => _dataContext.Set<T>().FirstOrDefaultAsync(predicate);
+
+        public async Task Add(T entity)
+        {
+            // await _dataContext.AddAsync(entity);
+            await _dataContext.Set<T>().AddAsync(entity);
+            await _dataContext.SaveChangesAsync();
+        }
+
+        public Task Update(T entity)
+        {
+            // In case AsNoTracking is used
+            _dataContext.Entry(entity).State = EntityState.Modified;
+            return _dataContext.SaveChangesAsync();
+        }
+
+        public Task Remove(T entity)
+        {
+            _dataContext.Set<T>().Remove(entity);
+            return _dataContext.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAll()
+        {
+            return await _dataContext.Set<T>().ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate)
+        {
+            return await _dataContext.Set<T>().Where(predicate).ToListAsync();
+        }
+
+        public Task<int> CountAll() => _dataContext.Set<T>().CountAsync();
+
+        public Task<int> CountWhere(Expression<Func<T, bool>> predicate)
+            => _dataContext.Set<T>().CountAsync(predicate);
+        
         public IQueryable<T> Include(params Expression<Func<T, object>>[] Includes)
         {
         IQueryable<T> query = null;
@@ -36,26 +69,5 @@ namespace Infra.Data.IGenericRepository
         return query == null ? _dataContext.Set<T>() : query; 
         }
 
-        public void Insert(T entity)
-        {
-            _dataContext.Set<T>().Add(entity);
-            
-        }
-
-        public IList<T> List()
-        {
-            return _dataContext.Set<T>().ToList();
-        }
-
-        public IList<T> List(Expression<Func<T, bool>> expression)
-        {
-            return _dataContext.Set<T>().Where(expression).ToList();
-        }
-
-        public void Update(T entity)
-        {
-            _dataContext.Entry<T>(entity).State = EntityState.Modified; 
-            
-        }
     }
 }

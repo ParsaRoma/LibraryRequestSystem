@@ -13,10 +13,13 @@ namespace Presentation.Controllers
     public class ScoreController : ControllerBase
     {
         private IScoreReports _scoreReports;
-        public ScoreController(IScoreReports scoreReports)
+        private IActionResult _actionResult;
+        public ScoreController(IScoreReports scoreReports, IActionResult actionResult)
         {
             _scoreReports = scoreReports;
+            _actionResult = actionResult;
         }
+        
 
         [HttpGet]
         [Route("api/NumberOfEveryUserBook")]
@@ -35,6 +38,7 @@ namespace Presentation.Controllers
         public IEnumerable<RedForOnceDto> BookThatRedForOnce()
         {
             return _scoreReports.BookThatRedForOnce();
+
         }
         [HttpGet]
         [Route("api/GetOneUserShelfs/{id}")]

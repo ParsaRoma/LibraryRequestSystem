@@ -22,6 +22,8 @@ namespace Infra.Data.EntitiesConfigs
             builder.HasOne(s => s.User)
             .WithMany(s => s.Shelves) 
             .HasForeignKey(s => s.UserID);
+
+            builder.Ignore(s => s.bookshelf);
             #endregion
 
         }

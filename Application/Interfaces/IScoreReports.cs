@@ -16,5 +16,6 @@ namespace Application.Interfaces
         public IEnumerable<RedForOnceDto> BookThatRedForOnce();
         
         public IEnumerable<Shelf> GetOneUserShelfs(int id);
+        public void h();
     }
 }

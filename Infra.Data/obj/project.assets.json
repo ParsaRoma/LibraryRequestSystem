@@ -1889,11 +1889,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MyEfProj\\Infra.Data\\Infra.Data.csproj",
+      "projectUniqueName": "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj",
       "projectName": "Infra.Data",
-      "projectPath": "D:\\MyEfProj\\Infra.Data\\Infra.Data.csproj",
+      "projectPath": "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj",
       "packagesPath": "C:\\Users\\Parham\\.nuget\\packages\\",
-      "outputPath": "D:\\MyEfProj\\Infra.Data\\obj\\",
+      "outputPath": "D:\\MyNewEfProj\\Infra.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Parham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1910,8 +1910,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\MyEfProj\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\MyEfProj\\Domain\\Domain.csproj"
+            "D:\\MyNewEfProj\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\MyNewEfProj\\Domain\\Domain.csproj"
             }
           }
         }
