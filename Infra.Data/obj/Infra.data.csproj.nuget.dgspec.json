@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj": {}
+    "D:\\MyNewEfProj\\Infra.data\\Infra.data.csproj": {}
   },
   "projects": {
     "D:\\MyNewEfProj\\Domain\\Domain.csproj": {
@@ -64,14 +64,14 @@
         }
       }
     },
-    "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj": {
+    "D:\\MyNewEfProj\\Infra.data\\Infra.data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj",
-        "projectName": "Infra.Data",
-        "projectPath": "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj",
+        "projectUniqueName": "D:\\MyNewEfProj\\Infra.data\\Infra.data.csproj",
+        "projectName": "Infra.data",
+        "projectPath": "D:\\MyNewEfProj\\Infra.data\\Infra.data.csproj",
         "packagesPath": "C:\\Users\\Parham\\.nuget\\packages\\",
-        "outputPath": "D:\\MyNewEfProj\\Infra.Data\\obj\\",
+        "outputPath": "D:\\MyNewEfProj\\Infra.data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Parham\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,6 +104,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.1.31, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.8, )"

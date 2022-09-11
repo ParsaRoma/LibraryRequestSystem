@@ -13,11 +13,11 @@ namespace Presentation.Controllers
     public class ScoreController : ControllerBase
     {
         private IScoreReports _scoreReports;
-        private IActionResult _actionResult;
-        public ScoreController(IScoreReports scoreReports, IActionResult actionResult)
+        
+        public ScoreController(IScoreReports scoreReports)
         {
             _scoreReports = scoreReports;
-            _actionResult = actionResult;
+         
         }
         
 

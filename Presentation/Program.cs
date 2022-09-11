@@ -1,11 +1,19 @@
+using System.Text;
 using Application.Interfaces;
 using Application.Services;
 using Infra.Data.DAL;
 using Infra.Data.data;
 using Infra.Data.IGenericRepository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Presentation.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
+ConfigurationManager configuration = builder.Configuration;
+
+
 
 // Add services to the container.
 builder.Services.AddScoped<UnitOfWork>(); // Add UnitOfWork to Container
@@ -20,9 +28,44 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(
-     options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+     options => options.UseSqlServer("name=ConnectionStrings:MyDb1"));
+builder.Services.AddDbContext<applicationDbContext>(
+     options => options.UseSqlServer("name=ConnectionStrings:MyDb1"));
 
-var app = builder.Build();
+     
+
+// For Identity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+.AddEntityFrameworkStores<applicationDbContext>()
+.AddDefaultTokenProviders();
+
+// Adding Authentication
+builder.Services.AddAuthentication(options => 
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+
+})// ادامه داره پایین
+
+//Adding Jwt Bearer
+.AddJwtBearer(options => 
+{
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidAudience = configuration["JWT:ValidAudience"],
+        ValidIssuer = configuration["JWT:ValidIssuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
+
+    };
+});
+
+
+var app = builder.Build(); 
 
 
 #region Pipelines 
@@ -35,8 +78,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseRouting();
+// Authentication & Authorization
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseRouting();
+
 
 app.UseEndpoints(endpoints => 
 {

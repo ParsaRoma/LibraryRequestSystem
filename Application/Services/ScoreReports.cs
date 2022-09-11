@@ -14,32 +14,20 @@ namespace Application.Services
         private readonly UnitOfWork db = new UnitOfWork();
         public IEnumerable<BookDto> NumberOfEveryUserBook()
         {
-    
-        var Number = db.ShelfRepository.Include(s => s.User, s=>s.bookshelf)
+        
+        var Number = db.ShelfRepository.Include(s => s.User)
+        .ToList()
         .Select(s =>  
         new BookDto()
         {
             UserId = s.User.Id,
             UserName = s.User.UserName,
             UserLastName = s.User.UserLastName,
-            BookNumber = s.bookshelf.Book.Id
-        })
-        .GroupBy(s => s.UserId).ToList();
-        return Number.SelectMany(s => s);
-        
-        
-        // .Select(s => new {key=s.Key, item =s.ToList()});
-        // return Number.Select(s =>
-        // new BookDto()
-        // {
-        //     UserName = s.item[].UserName,
-        //     UserLastName = s.item[2].UserLastName
+            BookNumber = s.BookShelves.Where(x => x.Book.Id > 0).Select(s => s.Book.Id).ToList()
             
-        // });
-        
-        
-        
-        
+        })
+        .GroupBy(s => s.UserId);
+        return (IEnumerable<BookDto>)Number;
         }
 
         public IEnumerable<Shelf> GetOneUserShelfs(int id)

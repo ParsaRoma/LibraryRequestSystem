@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain.Models;
 using Infra.Data.EntitiesConfigs;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 

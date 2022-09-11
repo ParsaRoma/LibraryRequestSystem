@@ -9,6 +9,6 @@ namespace Application.Services
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string UserLastName { get; set; }
-        public int BookNumber { get; set; }
+        public List<int> BookNumber { get; set; }
     }
 }
