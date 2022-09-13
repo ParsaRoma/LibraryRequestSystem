@@ -4,14 +4,18 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Presentation.Auth
+namespace Domain.Models.IdentityModels
 {
-    public class LoginModel
+    public class RegisterModel
     {
         [Required(ErrorMessage ="UserName is required")]
         public string? Username { get; set; }
+
+        [EmailAddress]
+        [Required(ErrorMessage ="Emial is required")]
+        public string? Email { get; set; }
         
-        [Required(ErrorMessage ="Password is required")]
+        [Required (ErrorMessage ="Password is required")]
         public string? Password { get; set; }
     }
 }

@@ -11,20 +11,24 @@ namespace Application.Services
     public class AchieveReports : IAchieveReports
     {
         
-        private readonly UnitOfWork db = new UnitOfWork();
+        private readonly UnitOfWork db  ;
+
+        public AchieveReports(UnitOfWork db)
+        {
+            this.db = db;
+        }
 
         public  IEnumerable<Books> GetAllBooks()
         {
-        //    var AllBook = db.BookRepository.GetAll();
-        //    return await AllBook;
-        throw new NotImplementedException();
+           var AllBook = db.BookRepository.List();
+           return  AllBook;
         }
 
         public IEnumerable<Users> GetAllUsers()
         {   
-            // var AllUser = db.UsersRepository.GetAll();
-            // return awa AllUser;
-        throw new NotImplementedException();
+            var AllUser = db.UsersRepository.List();
+            return  AllUser;
+    
         }
 
         public IEnumerable<Shelf> GetAllUsersShelf()

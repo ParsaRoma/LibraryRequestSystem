@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Application.Interfaces;
 using Application.Services;
 using Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
 {
+
     [ApiController]
     public class ScoreController : ControllerBase
     {
@@ -35,11 +37,7 @@ namespace Presentation.Controllers
         }
         [HttpGet]
         [Route("api/BookThatRedForOnce")]
-        public IEnumerable<RedForOnceDto> BookThatRedForOnce()
-        {
-            return _scoreReports.BookThatRedForOnce();
-
-        }
+        
         [HttpGet]
         [Route("api/GetOneUserShelfs/{id}")]
 

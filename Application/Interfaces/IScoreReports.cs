@@ -13,9 +13,8 @@ namespace Application.Interfaces
 
         public IEnumerable<PopularDto> PopularReadReadingBook();
 
-        public IEnumerable<RedForOnceDto> BookThatRedForOnce();
         
         public IEnumerable<Shelf> GetOneUserShelfs(int id);
-        public void h();
+
     }
 }

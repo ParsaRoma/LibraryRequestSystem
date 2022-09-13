@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Domain.BaseEntities
 {
-    public class BaseEntity : DbContext
+    public class BaseEntity 
     {
         public int Id { get; set; }
 

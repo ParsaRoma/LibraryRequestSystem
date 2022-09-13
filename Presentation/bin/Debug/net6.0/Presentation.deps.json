@@ -16,6 +16,7 @@
           "Microsoft.EntityFrameworkCore.InMemory": "6.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.8",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.8",
+          "Microsoft.Extensions.Identity.Stores": "6.0.8",
           "Microsoft.IdentityModel.Tokens": "6.22.0",
           "Swashbuckle.AspNetCore": "6.2.3",
           "System.IdentityModel.Tokens.Jwt": "6.22.0",
@@ -757,7 +758,8 @@
       },
       "Domain/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "6.0.8"
+          "Microsoft.EntityFrameworkCore": "6.0.8",
+          "Microsoft.Extensions.Identity.Stores": "6.0.8"
         },
         "runtime": {
           "Domain.dll": {}

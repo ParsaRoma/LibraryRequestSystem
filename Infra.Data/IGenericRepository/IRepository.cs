@@ -12,8 +12,8 @@ namespace Infra.Data.IGenericRepository
     {
     T Get(Guid id);
     IList<T> List();
-    IList<T> List(Expression<Func<T, bool>> expression);
-    public IQueryable<T> Include(params Expression<Func<T, object>>[] Include);
+    IList<T> ExpressionList(Expression<Func<T, bool>> expression);
+
     void Insert(T entity);
     void Update(T entity);
     void Delete(T entity);

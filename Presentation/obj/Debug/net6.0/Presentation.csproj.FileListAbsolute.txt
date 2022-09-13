@@ -82,6 +82,7 @@ D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Presentation.runtimeconfig.json
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Presentation.dll
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Presentation.pdb
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Humanizer.dll
+D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
@@ -97,6 +98,7 @@ D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
@@ -150,5 +152,3 @@ D:\MyNewEfProj\Presentation\obj\Debug\net6.0\refint\Presentation.dll
 D:\MyNewEfProj\Presentation\obj\Debug\net6.0\Presentation.pdb
 D:\MyNewEfProj\Presentation\obj\Debug\net6.0\Presentation.genruntimeconfig.cache
 D:\MyNewEfProj\Presentation\obj\Debug\net6.0\ref\Presentation.dll
-D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\MyNewEfProj\Presentation\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll

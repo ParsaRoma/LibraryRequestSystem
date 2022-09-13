@@ -8,9 +8,13 @@ using Infra.Data.IGenericRepository;
 
 namespace Infra.Data.DAL
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork  
     {
-        private ApplicationDbContext context = new ApplicationDbContext();
+        public UnitOfWork(ApplicationDbContext _db)
+        {
+            context = _db;
+        }
+        private ApplicationDbContext context ;
         private IRepository<Books>? bookRepository;
         private IRepository<Users>? usersRepository;
         private IRepository<Shelf>? shelfRepository;

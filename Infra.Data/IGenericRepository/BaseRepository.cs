@@ -21,20 +21,13 @@ namespace Infra.Data.IGenericRepository
             _dataContext.Set<T>().Remove(entity);
        
         }
+        
         public T Get(Guid id)
         {   
             return _dataContext.Set<T>().Find(id);
         }
 
-        public IQueryable<T> Include(params Expression<Func<T, object>>[] Includes)
-        {
-        IQueryable<T> query = null;
-        foreach (var include in Includes)
-        {
-            query = _dataContext.Set<T>().Include(include);
-        }
-        return query == null ? _dataContext.Set<T>() : query; 
-        }
+
 
         public void Insert(T entity)
         {
@@ -47,7 +40,7 @@ namespace Infra.Data.IGenericRepository
             return _dataContext.Set<T>().ToList();
         }
 
-        public IList<T> List(Expression<Func<T, bool>> expression)
+        public IList<T> ExpressionList(Expression<Func<T, bool>> expression)
         {
             return _dataContext.Set<T>().Where(expression).ToList();
         }

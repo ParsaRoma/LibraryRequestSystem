@@ -23,7 +23,6 @@ namespace Infra.Data.EntitiesConfigs
             .WithMany(s => s.Shelves) 
             .HasForeignKey(s => s.UserID);
 
-            builder.Ignore(s => s.bookshelf);
             #endregion
 
         }
