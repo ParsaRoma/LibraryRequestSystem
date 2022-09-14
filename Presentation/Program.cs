@@ -1,6 +1,8 @@
 using System.Text;
 using Application.Interfaces;
 using Application.Services;
+using Domain.ClaimHelper;
+using Domain.Models.IdentityModels;
 using Infra.Data.DAL;
 using Infra.Data.data;
 using Infra.Data.IGenericRepository;
@@ -31,7 +33,7 @@ builder.Services
 
 
 // For Identity
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
@@ -71,7 +73,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization(options => 
 {
-    options.AddPolicy("", policy => policy.RequireClaim("")); 
+    options.AddPolicy(Constants.ROLE_ADMIN, policy => policy.RequireClaim("")); 
 });
 
 
