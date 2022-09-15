@@ -51,6 +51,9 @@ namespace Presentation.Controllers
                     
                     new Claim(ClaimTypes.Name, user.UserName),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim("FirstAccesslevel",Boolean.TrueString),
+                    new Claim("SecondAccesslevel", Boolean.TrueString),
+                    
                 };
 
                 foreach (var userRole in userRoles)

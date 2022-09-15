@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.Interfaces;
 using Application.Services;
 using Domain.Models;
+using Domain.Models.IdentityModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,7 @@ using Presentation.Auth;
 
 namespace Presentation.Controllers
 {
-    [Authorize (Policy ="Master")]
+    [Authorize]
     [ApiController]
 
     public class AchieveController : ControllerBase
@@ -27,6 +28,8 @@ namespace Presentation.Controllers
       
         }
         
+        
+        
         [HttpGet]
         [Route("api/AchieveBooks")]
         public IEnumerable<Books> GetAllBooks()
@@ -35,12 +38,17 @@ namespace Presentation.Controllers
             return res;
             
         }
+        
+        [Authorize(Roles=UserRoles.Admin)]
         [HttpGet]
         [Route("api/AchieveUsers")]
         public IEnumerable<Users> GetAllUsers()
         {
             return _achiveReports.GetAllUsers();
         }
+        
+        
+        [Authorize(Policy ="FirstAccessLevel")]
         [HttpGet]
         [Route("api/AchieveShelves")]
         public IEnumerable<Shelf> GetShelves()

@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Infra.Data/1.0.0": {
+      "Infra.data/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
           "Microsoft.AspNetCore.Identity": "2.1.31",
@@ -16,7 +16,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "6.0.8"
         },
         "runtime": {
-          "Infra.Data.dll": {}
+          "Infra.data.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -830,7 +830,7 @@
     }
   },
   "libraries": {
-    "Infra.Data/1.0.0": {
+    "Infra.data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

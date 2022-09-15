@@ -3,19 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
-using Infra.Data.DAL;
+using Domain.BaseEntities;
+using Infra.Data.UnitOfWork;
 
 namespace Application.Services
 {
-    public class AdminCrud : IAdminCrud
-    {
-        private readonly UnitOfWork _db;
-        public AdminCrud(UnitOfWork db)
+    public class CRUD<T>
+    {   
+        private readonly UnitOfWork _db  ;
+
+        public CRUD(UnitOfWork db)
         {
             _db = db;
         }
-       
-        public bool CreatUser()
+        public bool AddShelf(IEnumerable<T> entity)
+        {
+          throw new NotImplementedException();
+        }
+
+        public bool AddUser(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteShelf(int id)
         {
             throw new NotImplementedException();
         }
@@ -25,12 +36,12 @@ namespace Application.Services
             throw new NotImplementedException();
         }
 
-        public bool EditUser(int id)
+        public bool UpdateShelf(int id)
         {
             throw new NotImplementedException();
         }
 
-        public bool GetUser(int id)
+        public bool UpdateUser(int id)
         {
             throw new NotImplementedException();
         }

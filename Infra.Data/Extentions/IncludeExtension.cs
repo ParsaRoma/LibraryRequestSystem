@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Domain.BaseEntities;
-using Infra.Data.IGenericRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Extentions

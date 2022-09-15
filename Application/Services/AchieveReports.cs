@@ -3,39 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
+using Domain.Interfaces;
 using Domain.Models;
-using Infra.Data.DAL;
+using Infra.Data.UnitOfWork;
 
 namespace Application.Services
 {
     public class AchieveReports : IAchieveReports
     {
         
-        private readonly UnitOfWork db  ;
+        private readonly IUnitOfWork db  ;
 
-        public AchieveReports(UnitOfWork db)
+        public AchieveReports(IUnitOfWork db)
         {
             this.db = db;
         }
 
         public  IEnumerable<Books> GetAllBooks()
         {
-           var AllBook = db.BookRepository.List();
+           var AllBook = db.bookRepository.GetAll();
            return  AllBook;
         }
 
         public IEnumerable<Users> GetAllUsers()
         {   
-            var AllUser = db.UsersRepository.List();
+            var AllUser = db.userRepository.GetAll();
             return  AllUser;
     
         }
 
         public IEnumerable<Shelf> GetAllUsersShelf()
         {
-            // var AllShelves = db.ShelfRepository.List();
-            // return AllShelves;
-        throw new NotImplementedException();
+            var AllShelves = db.shelfRepository.GetAll();
+            return AllShelves;
+       
         }
     }
 }

@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Application.Interfaces;
 using Application.Services;
 using Domain.Models;
+using Domain.Models.DtoModels;
+using Domain.Models.IdentityModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
 {
-
+    [Authorize]
     [ApiController]
     public class ScoreController : ControllerBase
     {
@@ -22,37 +24,33 @@ namespace Presentation.Controllers
          
         }
         
-
+        
         [HttpGet]
         [Route("api/NumberOfEveryUserBook")]
-        public IEnumerable<BookDto> NumberOfEveryUserBook()
+        public IEnumerable<NumberOfEveryUserBookDto> NumberOfEveryUserBook()
         {
             return _scoreReports.NumberOfEveryUserBook();
-        } 
+        }
+
+
+
         [HttpGet]
         [Route("api/GetPopularReadReadingBook")]
-        public IEnumerable<PopularDto> GetPopularReadReadingBook()
+        public IEnumerable<PopularReadReadingBookDto> GetPopularReadReadingBook()
         {
             return _scoreReports.PopularReadReadingBook();
         }
-        [HttpGet]
-        [Route("api/BookThatRedForOnce")]
         
+       
+        [Authorize(Roles=UserRoles.Admin)]
         [HttpGet]
         [Route("api/GetOneUserShelfs/{id}")]
-
         public  IEnumerable<Shelf> GetOneUserShelfs(int id)
         {
 
-            // try
-            // {
-                var T =  _scoreReports.GetOneUserShelfs(id);
-                return T;
-            // }catch(SystemException ex)
-            // {
-            //     // return StatusCode(StatusCodes.Status500InternalServerError,
-            //         // "Error retrieving data from the database");
-            // }
+            var T =  _scoreReports.GetOneUserShelfs(id);
+            return T;
+         
 
         }
         

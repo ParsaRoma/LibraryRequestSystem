@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Application.Services;
+using Domain.Models.DtoModels;
+using Domain.Models.IdentityModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Controllers
 {
-    
+    [Authorize]
     [ApiController]
     public class SortController : ControllerBase
     {
@@ -20,16 +22,17 @@ namespace Presentation.Controllers
             _sortingReports = sortingReports;
         }
         
+        [Authorize(Roles=UserRoles.Admin)]
         [HttpGet]
         [Route("api/SortingUsersBaseOnRedBook")]
-        public IEnumerable<UsersSortDto> SortingUsersBaseOnRedBook()
+        public IEnumerable<SortingUsersBaseOnRedBookDto> SortingUsersBaseOnRedBook()
         {
             return _sortingReports.SortingUsersBaseOnRedBook();
         }
         
         [HttpGet]
         [Route("api/MaximumBookVisits")]
-        public IEnumerable<BookSortDto> MaximumBookVisits()
+        public IEnumerable<MaximumBookVisitsDto> MaximumBookVisits()
         {
             return _sortingReports.MaximumBookVisits();
         }

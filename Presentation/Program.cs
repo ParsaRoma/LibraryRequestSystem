@@ -1,11 +1,10 @@
 using System.Text;
 using Application.Interfaces;
 using Application.Services;
-using Domain.ClaimHelper;
+using Domain.Interfaces;
 using Domain.Models.IdentityModels;
-using Infra.Data.DAL;
 using Infra.Data.data;
-using Infra.Data.IGenericRepository;
+using Infra.Data.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -33,7 +32,7 @@ builder.Services
 
 
 // For Identity
-builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
@@ -41,7 +40,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole<int>>()
 
 
 // Add services to the container.
-builder.Services.AddScoped<UnitOfWork>(); // Add UnitOfWork to Container
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); // Add UnitOfWork to Container
+builder.Services.AddScoped<  UnitOfWork>(); // Add UnitOfWork to Container
 builder.Services.AddScoped<IAchieveReports, AchieveReports>(); //Add Application layer Interfaces to container
 builder.Services.AddScoped<IScoreReports, ScoreReports>();
 builder.Services.AddScoped<ISortingReports, SortReports>();
@@ -73,7 +73,10 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization(options => 
 {
-    options.AddPolicy("Master", policy => policy.RequireClaim("master")); 
+    options.AddPolicy("FirstAccessLevel", policy => policy.RequireClaim("Specialuser"));
+    options.AddPolicy("SecondAccessLevel", policy => policy.RequireClaim("SpecialAdmin"));
+    
+
 });
 
 

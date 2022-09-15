@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain.Models;
-using Infra.Data.DAL;
+using Domain.Models.DtoModels;
+using Infra.Data.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services
@@ -18,43 +19,36 @@ namespace Application.Services
             this.db = db;
         }
 
-        public IEnumerable<BookDto> NumberOfEveryUserBook()
+        public IEnumerable<NumberOfEveryUserBookDto> NumberOfEveryUserBook()
         {
-          
-        var Numbers = from book in db.BookRepository.List() join
-            bookshelf in db.BookShelfRepository.List() on book.Id equals bookshelf.BookID
-            join shelf in db.ShelfRepository.List() on bookshelf.ShelfID equals shelf.Id
-            join users in db.UsersRepository.List() on shelf.UserID equals users.Id 
-            group new {users, book} by new {users.Id, users.UserName, users.UserLastName} into groupResult 
+        var Numbers = db.bookRepository.GetScoreReport().Select(x => new NumberOfEveryUserBookDto{
 
-            select new BookDto()
-            {
-              UserId = groupResult.Key.Id,
-              UserName = groupResult.Key.UserName,
-              UserLastName = groupResult.Key.UserLastName,
-              BookNumber = groupResult.Count(books => books.book.Id > 0)
-            };
-        
+            UserId = x.UserId,
+            UserName = x.UserName,
+            UserLastName = x.UserLastName,
+            BookNumber = x.BookNumber
+
+        });
         
         return Numbers.OrderByDescending(query => query.BookNumber);
         }
 
         public IEnumerable<Shelf> GetOneUserShelfs(int id)
         {
-            var AllShelves = db.ShelfRepository.ExpressionList(x=> x.UserID == 1);
+            var AllShelves = db.shelfRepository.GetAll().Where(x=> x.UserID == 1);
             return  AllShelves;
         
         }
 
-        public IEnumerable<RedForOnceDto> UsersRedBookOnce() // Users who are reading at least one book
+        public IEnumerable<UsersRedBookOnceDto> UsersRedBookOnce() // Users who are reading at least one book
         {
           
-            var Numbers = from book in db.BookRepository.List() join
-            bookshelf in db.BookShelfRepository.List() on book.Id equals bookshelf.BookID
-            join shelf in db.ShelfRepository.List() on bookshelf.ShelfID equals shelf.Id
-            join users in db.UsersRepository.List() on shelf.UserID equals users.Id 
+            var Numbers = from book in db.bookRepository.GetAll() join
+            bookshelf in db.bookShelvesRepository.GetAll() on book.Id equals bookshelf.BookID
+            join shelf in db.shelfRepository.GetAll() on bookshelf.ShelfID equals shelf.Id
+            join users in db.userRepository.GetAll() on shelf.UserID equals users.Id 
             group new {users,shelf} by new {users.Id, shelf.BookReading, shelf.BookRead} into groupResult 
-            select new RedForOnceDto()
+            select new UsersRedBookOnceDto()
             {
                 UserId = groupResult.Key.Id,
                 Numbers = groupResult.Count(p => p.shelf.BookReading == true)
@@ -63,15 +57,15 @@ namespace Application.Services
  
         }
 
-        public IEnumerable<PopularDto> PopularReadReadingBook()
+        public IEnumerable<PopularReadReadingBookDto> PopularReadReadingBook()
         {
-            var Popular = from book in db.BookRepository.List() join
-            bookshelf in db.BookShelfRepository.List() on book.Id equals bookshelf.BookID
-            join shelf in db.ShelfRepository.List() on bookshelf.ShelfID equals shelf.Id
-            join users in db.UsersRepository.List() on shelf.UserID equals users.Id 
+            var Popular = from book in db.bookRepository.GetAll() join
+            bookshelf in db.bookShelvesRepository.GetAll() on book.Id equals bookshelf.BookID
+            join shelf in db.shelfRepository.GetAll() on bookshelf.ShelfID equals shelf.Id
+            join users in db.userRepository.GetAll() on shelf.UserID equals users.Id 
             where shelf.BookRead == true || shelf.BookReading == true
             group new {users,shelf} by new {users.Id, shelf.BookReading, shelf.BookRead} into groupResult 
-            select new PopularDto () 
+            select new PopularReadReadingBookDto () 
             {
                 UserId = groupResult.Key.Id,
                 BookReadingCount = groupResult.Count(p => p.shelf.BookReading == true),

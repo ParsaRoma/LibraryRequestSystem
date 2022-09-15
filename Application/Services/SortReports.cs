@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain.Models;
-using Infra.Data.DAL;
+using Domain.Models.DtoModels;
+using Infra.Data.UnitOfWork;
 
 namespace Application.Services
 {
@@ -17,17 +18,17 @@ namespace Application.Services
             this.db = db;
         }
 
-        public IEnumerable<BookSortDto> MaximumBookVisits()
+        public IEnumerable<MaximumBookVisitsDto> MaximumBookVisits()
         {
             
-            var BookSort = from book in db.BookRepository.List() join
-            bookshelf in db.BookShelfRepository.List() on book.Id equals bookshelf.BookID
-            join shelf in db.ShelfRepository.List() on bookshelf.ShelfID equals shelf.Id
-            join users in db.UsersRepository.List() on shelf.UserID equals users.Id
+            var BookSort = from book in db.bookRepository.GetAll() join
+            bookshelf in db.bookShelvesRepository.GetAll() on book.Id equals bookshelf.BookID
+            join shelf in db.shelfRepository.GetAll() on bookshelf.ShelfID equals shelf.Id
+            join users in db.userRepository.GetAll() on shelf.UserID equals users.Id
             where shelf.BookRed == true
             // group new{book,users,shelf} by new {book.Id, userId = users.Id, shelf.BookRed} into groupResult
             group book by book.Id into groupResult
-            select new BookSortDto()
+            select new MaximumBookVisitsDto()
             {
                 BookId = groupResult.Key,
                 NumberOfUsers = groupResult.Count()
@@ -36,14 +37,14 @@ namespace Application.Services
         throw new NotImplementedException();
         }
 
-        public IEnumerable<UsersSortDto> SortingUsersBaseOnRedBook()
+        public IEnumerable<SortingUsersBaseOnRedBookDto> SortingUsersBaseOnRedBook()
         {
-            var UserSort = from book in db.BookRepository.List() join
-            bookshelf in db.BookShelfRepository.List() on book.Id equals bookshelf.BookID
-            join shelf in db.ShelfRepository.List() on bookshelf.ShelfID equals shelf.Id
-            join users in db.UsersRepository.List() on shelf.UserID equals users.Id
+            var UserSort = from book in db.bookRepository.GetAll() join
+            bookshelf in db.bookShelvesRepository.GetAll() on book.Id equals bookshelf.BookID
+            join shelf in db.shelfRepository.GetAll() on bookshelf.ShelfID equals shelf.Id
+            join users in db.userRepository.GetAll() on shelf.UserID equals users.Id
             group new {users, shelf} by new {users.Id, shelf.BookRed} into groupResult
-            select new UsersSortDto ()
+            select new SortingUsersBaseOnRedBookDto ()
             {
                 UserId = groupResult.Key.Id,
                 NumberOfBookRed = groupResult.OrderByDescending(s => s.shelf.BookRed)
