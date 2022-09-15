@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyNewEfProj\\Infra.data\\Infra.data.csproj": {}
+    "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj": {}
   },
   "projects": {
     "D:\\MyNewEfProj\\Domain\\Domain.csproj": {
@@ -68,14 +68,14 @@
         }
       }
     },
-    "D:\\MyNewEfProj\\Infra.data\\Infra.data.csproj": {
+    "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyNewEfProj\\Infra.data\\Infra.data.csproj",
-        "projectName": "Infra.data",
-        "projectPath": "D:\\MyNewEfProj\\Infra.data\\Infra.data.csproj",
+        "projectUniqueName": "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj",
+        "projectName": "Infra.Data",
+        "projectPath": "D:\\MyNewEfProj\\Infra.Data\\Infra.Data.csproj",
         "packagesPath": "C:\\Users\\Parham\\.nuget\\packages\\",
-        "outputPath": "D:\\MyNewEfProj\\Infra.data\\obj\\",
+        "outputPath": "D:\\MyNewEfProj\\Infra.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Parham\\AppData\\Roaming\\NuGet\\NuGet.Config",
