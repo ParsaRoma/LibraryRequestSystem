@@ -37,10 +37,10 @@ namespace Infra.Data.data
             builder.ApplyConfiguration(new ShelfConfigs());
             builder.ApplyConfiguration(new UsersConfig());
             //down we set UserClaims for authorazation
-            builder.Entity<AppUserClaim>().HasData
-            (
-                new AppUserClaim() {id=1, ClaimType=Constants.Admin, ClaimValue=Constants.User,DateCreated=DateTime.UtcNow, DateModified=DateTime.UtcNow},
-            );   
+            // builder.Entity<AppUserClaim>().HasData
+            // (
+            //     new AppUserClaim() {id=1, ClaimType=Constants.Admin, ClaimValue=Constants.User,DateCreated=DateTime.UtcNow, DateModified=DateTime.UtcNow},
+            // );   
 
         }
         public DbSet<Books> books { get; set; }

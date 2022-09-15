@@ -71,7 +71,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization(options => 
 {
-    options.AddPolicy("", policy => policy.RequireClaim("")); 
+    options.AddPolicy("Master", policy => policy.RequireClaim("master")); 
 });
 
 

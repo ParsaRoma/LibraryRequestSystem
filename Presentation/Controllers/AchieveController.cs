@@ -12,7 +12,7 @@ using Presentation.Auth;
 
 namespace Presentation.Controllers
 {
-    [Authorize]
+    [Authorize (Policy ="Master")]
     [ApiController]
 
     public class AchieveController : ControllerBase
