@@ -73,11 +73,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization(options => 
 {
-<<<<<<< HEAD
     options.AddPolicy("Master", policy => policy.RequireClaim("master")); 
-=======
-    options.AddPolicy(Constants.ROLE_ADMIN, policy => policy.RequireClaim("")); 
->>>>>>> master
 });
 
 
