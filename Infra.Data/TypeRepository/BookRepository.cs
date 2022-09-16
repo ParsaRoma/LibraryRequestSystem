@@ -39,6 +39,50 @@ namespace Infra.Data.TypeRepository
 
         }
 
+        public IEnumerable<UsersRedBookOnceDto> GetUsersRedBookOnce()
+        {
+            var UserNumber = _context.users .Include(x => x.Shelves).ThenInclude(x => x.BookShelves).ThenInclude(x => x.Book)
+            .GroupBy(x => new {x.Id}).Select
+            (
+                x => new UsersRedBookOnceDto()
+                {
+                    UserId = x.Key.Id,
+                    Numbers = x.SelectMany(x => x.Shelves).Select(x => x.BookReading == true)
+                    .Count()
+                }
+            );
+            return UserNumber.ToList();
+        }
+
+        public IEnumerable<PopularReadReadingBookDto> GetPopularReadReadingBook()
+        {
+            var ReaderUsers = _context.users.Include(x => x.Shelves).ThenInclude(x => x.BookShelves).ThenInclude(x => x.Book).SelectMany(x => x.Shelves)
+            .Where(x => x.BookReading == true || x.BookRead == true)
+            .GroupBy(x => new {x.Id}).Select
+            (
+                  x => new PopularReadReadingBookDto()
+                  {
+                    UserId = x.Key.Id,
+                    BookReadingCount = x.Select(x => x.BookReading).Count(),
+                    BookReadCount = x.Select(x => x.BookRead).Count()
+                  }
+            );
+            return ReaderUsers.ToList();
+        }
+        public IEnumerable<MaximumBookVisitsDto> GetMaximumBookVisits()
+        {
+            var Popular = _context.books.Include(x => x.BookShelves).ThenInclude(x => x.Shelf).ThenInclude(x => x.User)
+          
+            .GroupBy(x => new {x.Id}).Select
+            (
+                x => new MaximumBookVisitsDto()
+                {
+                    BookId = x.Key.Id,
+                    NumberOfUsers = x.SelectMany(x => x.BookShelves).Select(x => x.Shelf).Select(x => x.BookRed == true)
+                }
+            );
+            return Popular.ToList();
+        }
 
     }
 }

@@ -41,7 +41,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 // Add services to the container.
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>(); // Add UnitOfWork to Container
-builder.Services.AddScoped<  UnitOfWork>(); // Add UnitOfWork to Container
+
 builder.Services.AddScoped<IAchieveReports, AchieveReports>(); //Add Application layer Interfaces to container
 builder.Services.AddScoped<IScoreReports, ScoreReports>();
 builder.Services.AddScoped<ISortingReports, SortReports>();

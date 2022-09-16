@@ -10,6 +10,9 @@ namespace Domain.Interfaces
     public interface IBookRepository : IGenericRepository<Books>
     {
         IEnumerable<NumberOfEveryUserBookDto> GetScoreReport();
+        public IEnumerable<UsersRedBookOnceDto> GetUsersRedBookOnce();
+        public IEnumerable<PopularReadReadingBookDto> GetPopularReadReadingBook();
+        public IEnumerable<MaximumBookVisitsDto> GetMaximumBookVisits();
     }
 }
 
